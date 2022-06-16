@@ -9,6 +9,8 @@ find_package (Sophus REQUIRED)
 find_package (yaml-cpp REQUIRED)
 find_package (PCL REQUIRED)
 
+set(Sophus_LIBRARIES libSophus.so)
+
 add_definitions( ${PCL_DEFINITIONS} )
 
 find_package(catkin REQUIRED COMPONENTS
@@ -114,4 +116,3 @@ add_executable(republish_record
 target_link_libraries(republish_record
     ${catkin_LIBRARIES}
     )
-

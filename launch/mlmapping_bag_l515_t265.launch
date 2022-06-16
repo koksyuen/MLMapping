@@ -2,7 +2,7 @@
 <launch>
     <param name ="/use_sim_time" value="true"/>
 <!--Input######################################################################################################-->
-    <node pkg="rosbag" type="play" name="rosbag" output="log" args="$(find mlmapping)/bag/corridor.bag -r1 --clock">
+    <node pkg="rosbag" type="play" name="rosbag" output="log" args="/home/koksyuen/Documents/fyp2/dataset/corridor.bag -r1 --clock">
     </node>
 
 <!--rviz#######################################################################################################-->
@@ -18,7 +18,7 @@
     <!-- Manager -->
     <node pkg="nodelet" type="nodelet"
           name="mlmapping_nodelet_manager" args="manager" output="screen">
-          <param name="num_worker_threads" value="4" />
+          <param name="num_worker_threads" value="2" />
     </node>
 
     <node pkg="nodelet" type="nodelet" args="load mlmapping/AwarenessMapNodeletClass mlmapping_nodelet_manager"
@@ -32,10 +32,3 @@
     </node>
 
 </launch>
-
-
-
-
-
-
-
