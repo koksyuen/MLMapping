@@ -24,8 +24,8 @@
 
     <node pkg="nodelet" type="nodelet" args="load mlmapping/AwarenessMapNodeletClass mlmapping_nodelet_manager"
         name="awareness_loader" output="screen">
-        <remap from="/mlmapping/pc"          to="/camera/depth/color/points"/>
-        <remap from="/mlmapping/pose"        to="/imu_pose"/>
+        <remap from="/mlmapping/pc"          to="/d435/depth/color/points"/>
+        <remap from="/mlmapping/pose"        to="/orb_slam3_ros/camera"/>
     </node>
 
     <node pkg="nodelet" type="nodelet" args="load mlmapping/LocalMapNodeletClass mlmapping_nodelet_manager"
@@ -33,10 +33,3 @@
     </node>
 
 </launch>
-
-
-
-
-
-
-
