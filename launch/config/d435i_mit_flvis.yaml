@@ -34,7 +34,7 @@ publish_T_wb:      true
 publish_T_bs:      true
 
 ##transformation from sensor frame to body frame
-sensor_frame_id:   "camera_depth_optical_frame"
+sensor_frame_id:   "d435_depth_optical_frame"
 T_B_S:
 [  0.0,   0.0,  1.0,  0.0,
   -1.0,   0.0,  0.0,  0.0,
