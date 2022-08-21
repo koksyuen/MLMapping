@@ -1,6 +1,12 @@
 <?xml version="1.0"?>
 <launch>
-    <param name ="/use_sim_time" value="true"/>
+
+<!-- Intel Realsense -->
+    <include file="$(find orb_slam3_ros_wrapper)/launch/realsense/rs_multiple_devices.launch"/>
+
+
+<!-- ORBSLAM3 -->
+    <include file="$(find orb_slam3_ros_wrapper)/launch/orb_slam3_stereo_inertial_d435.launch"/>
 
 <!--rviz#######################################################################################################-->
    <node type="rviz" name="rviz" pkg="rviz" args="-d $(find mlmapping)/launch/config/mlmapping.rviz" />
@@ -12,7 +18,7 @@
         <param name="/trajectory_publish_rate" value="20.0" />
     </node> -->
 
-    <!-- <arg name="node_start_delay"  default="10.0" /> -->
+    <arg name="node_start_delay"  default="10.0" />
 
 <!--visualization##############################################################################################-->
 
@@ -29,13 +35,15 @@
     </node>
 
     <node pkg="nodelet" type="nodelet" args="load mlmapping/AwarenessMapNodeletClass mlmapping_nodelet_manager"
-        name="awareness_loader" output="screen">
+        name="awareness_loader" output="screen"
+        launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' ">
         <remap from="/mlmapping/pc"          to="/d435/depth/color/points"/>
         <remap from="/mlmapping/pose"        to="/orb_pose"/>
     </node>
 
    <node pkg="nodelet" type="nodelet" args="load mlmapping/LocalMapNodeletClass mlmapping_nodelet_manager"
-        name="localmap_loader" output="screen">
+        name="localmap_loader" output="screen"
+        launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' ">
     </node>
 
 </launch>

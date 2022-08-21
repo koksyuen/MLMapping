@@ -51,8 +51,8 @@ world_frame_id:     "map"
 #generate projected 2D map
 use_projected_2d_map:   true
 use_relative_height:    true
-projected_2d_map_min_z: -0.5
-projected_2d_map_max_z:  0.5
+projected_2d_map_min_z: 1.5
+projected_2d_map_max_z: 2.0
 
 #generate esdfs
 use_esdfs: true
